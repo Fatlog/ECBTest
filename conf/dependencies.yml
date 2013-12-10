@@ -1,0 +1,5 @@
+# Application dependencies
+
+require:
+    - play
+    - com.netflix.astyanax -> astyanax 1.56.26

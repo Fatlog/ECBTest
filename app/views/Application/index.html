@@ -1,0 +1,38 @@
+#{extends 'main.html' /}
+
+#{set title:'ECBTest' /}
+
+#{set 'moreStyles'}	
+    #{stylesheet 'custom.css' /}
+#{/set}
+
+#{set 'moreScripts'}
+    #{script 'd3.v3.min.js'/}
+	#{script 'custom.js'/}
+	#{script 'utils.js'/}
+#{/set}
+
+<script type="text/javascript">
+$(document).ready(function () {
+	getData();
+});
+
+$(function() {
+    $( "button" )
+		.click(function( event ) {			
+			event.preventDefault();
+			getData();
+      });
+});
+
+function getData() {
+	refreshExchangeRates(#{jsAction @ExchangeRates.list()/}());
+}
+
+</script>
+<div class="controls">
+	<button>Refresh Data</button>
+	<input type="checkbox" id="option1" name="option1" 
+		value="Average" onclick="getData()"> Averaged?
+</div>
+<ul id="rates" class="list2col" />
